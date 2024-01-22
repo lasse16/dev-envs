@@ -23,9 +23,11 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         bash = pkgs.mkShell {
+          name = "bash";
           packages = with pkgs; [ shellcheck ];
         };
         terraform = pkgs.mkShell {
+          name = "terraform";
           packages = with pkgs;  [ terraform-ls tflint terraform-docs terraform ];
         };
       });
