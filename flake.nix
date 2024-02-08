@@ -26,6 +26,10 @@
           name = "bash";
           packages = with pkgs; [ shellcheck ];
         };
+        nix = pkgs.mkShell {
+          name = "nix";
+          packages = with pkgs; [ nil alejandra statix vulnix deadnix ];
+        };
         terraform = pkgs.mkShell {
           name = "terraform";
           packages = with pkgs;  [ terraform-ls tflint terraform-docs terraform ];
