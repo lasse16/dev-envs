@@ -14,14 +14,13 @@
 
   outputs = { self, nixpkgs, nixpkgs-terraform, flake-utils }:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
-      forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
-        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-        terraform = nixpkgs-terraform.packages.${system}."1.7.1";
+      system =  "x86_64-linux";
+  pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+  terraform = nixpkgs-terraform.packages.${system}."1.7.1";
       });
     in
     {
-      devShells = forEachSupportedSystem ({ pkgs }: {
+      devShells = : {
         bash = pkgs.mkShell {
           name = "bash";
           packages = with pkgs; [ shellcheck ];
@@ -34,6 +33,6 @@
           name = "terraform";
           packages = with pkgs;  [ terraform-ls tflint terraform-docs terraform ];
         };
-      });
+      };
     };
 }
