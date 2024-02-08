@@ -12,27 +12,32 @@
     extra-trusted-public-keys = "nixpkgs-terraform.cachix.org-1:8Sit092rIdAVENA3ZVeH9hzSiqI/jng6JiCrQ1Dmusw=";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-terraform, flake-utils }:
-    let
-      system =  "x86_64-linux";
-  pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-  terraform = nixpkgs-terraform.packages.${system}."1.7.1";
-      });
-    in
-    {
-      devShells = : {
-        bash = pkgs.mkShell {
-          name = "bash";
-          packages = with pkgs; [ shellcheck ];
-        };
-        nix = pkgs.mkShell {
-          name = "nix";
-          packages = with pkgs; [ nil alejandra statix vulnix deadnix ];
-        };
-        terraform = pkgs.mkShell {
-          name = "terraform";
-          packages = with pkgs;  [ terraform-ls tflint terraform-docs terraform ];
-        };
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-terraform,
+    flake-utils,
+  }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    terraform = nixpkgs-terraform.packages.${system}."1.7.1";
+  in {
+    devShells.${system} = {
+      bash = pkgs.mkShell {
+        name = "bash";
+        packages = with pkgs; [shellcheck];
+      };
+      nix = pkgs.mkShell {
+        name = "nix";
+        packages = with pkgs; [nil alejandra statix vulnix deadnix];
+      };
+      terraform = pkgs.mkShell {
+        name = "terraform";
+        packages = with pkgs; [terraform-ls tflint terraform-docs terraform];
       };
     };
+  };
 }
