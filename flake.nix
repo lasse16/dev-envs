@@ -34,6 +34,10 @@
         name = "nix";
         packages = with pkgs; [nil alejandra statix vulnix deadnix];
       };
+      markdown = pkgs.mkShell {
+        name = "markdown";
+        packages = with pkgs; [ marksman vale ];
+      };
       terraform = pkgs.mkShell {
         name = "terraform";
         packages = with pkgs; [terraform-ls tflint terraform-docs terraform];
