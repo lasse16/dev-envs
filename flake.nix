@@ -25,7 +25,7 @@
     };
     terraform = nixpkgs-terraform.packages.${system}."1.7.1";
   in {
-    devShells.${system} = {
+    devShells.${system} = rec {
       bash = pkgs.mkShell {
         name = "bash";
         packages = with pkgs; [shellcheck];
@@ -38,6 +38,7 @@
         name = "terraform";
         packages = with pkgs; [terraform-ls tflint terraform-docs terraform];
       };
+      default = nix;
     };
   };
 }
