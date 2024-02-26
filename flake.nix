@@ -38,6 +38,10 @@
         name = "terraform";
         packages = with pkgs; [terraform-ls tflint terraform-docs terraform];
       };
+      gh-actions = pkgs.mkShell {
+     	name = "GitHub Actions" ;
+	packages = with pkgs; [yaml-language-server actionlint yamllint];
+      };
       default = nix;
     };
   };
