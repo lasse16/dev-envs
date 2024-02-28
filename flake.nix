@@ -23,7 +23,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    terraform = nixpkgs-terraform.packages.${system}."1.7.1";
+    versioned-terraform = nixpkgs-terraform.packages.${system}."1.7.1";
   in {
     devShells.${system} = rec {
       bash = pkgs.mkShell {
@@ -40,7 +40,7 @@
       };
       terraform = pkgs.mkShell {
         name = "terraform";
-        packages = with pkgs; [terraform-ls tflint terraform-docs terraform];
+        packages = with pkgs; [terraform-ls tflint terraform-docs versioned-terraform];
       };
       gh-actions = pkgs.mkShell {
      	name = "GitHub Actions" ;
