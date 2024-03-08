@@ -23,7 +23,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    versioned-terraform = nixpkgs-terraform.packages.${system}."1.7.1";
+    versioned-terraform = nixpkgs-terraform.packages.${system}."1.7.4";
   in {
     devShells.${system} = rec {
       bash = pkgs.mkShell {
