@@ -46,6 +46,10 @@
      	name = "GitHub Actions" ;
 	packages = with pkgs; [yaml-language-server actionlint yamllint];
       };
+      lua = pkgs.mkShell {
+     	name = "Lua" ;
+	packages = with pkgs; [lua-language-server stylua ];
+      };
       default = nix;
     };
   };
