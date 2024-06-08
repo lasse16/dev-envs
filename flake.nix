@@ -50,6 +50,10 @@
      	name = "Lua" ;
 	packages = with pkgs; [lua-language-server stylua ];
       };
+      rust = pkgs.mkShell {
+     	name = "Rust" ;
+	packages = with pkgs; [ clippy rustfmt rust-analyzer ];
+      };
       default = nix;
     };
   };
