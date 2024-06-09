@@ -2,7 +2,7 @@
   description = "A collection of nix flake-based development environments";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-terraform.url = "github:stackbuilders/nixpkgs-terraform";
     flake-utils.url = "github:numtide/flake-utils";
   };
