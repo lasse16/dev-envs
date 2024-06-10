@@ -28,7 +28,7 @@
     devShells.${system} = rec {
       bash = pkgs.mkShell {
         name = "bash";
-        packages = with pkgs; [shellcheck];
+        packages = with pkgs; [shellcheck shfmt];
       };
       nix = pkgs.mkShell {
         name = "nix";
