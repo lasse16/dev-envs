@@ -32,7 +32,7 @@
       };
       nix = pkgs.mkShell {
         name = "nix";
-        packages = with pkgs; [nil alejandra statix vulnix deadnix];
+        packages = with pkgs; [nil alejandra statix vulnix deadnix nixd];
       };
       markdown = pkgs.mkShell {
         name = "markdown";
