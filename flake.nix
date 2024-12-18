@@ -51,8 +51,12 @@
 	packages = with pkgs; [lua-language-server stylua ];
       };
       rust = pkgs.mkShell {
-     	name = "Rust" ;
-	packages = with pkgs; [ cargo rustc clippy rustfmt rust-analyzer lldb_18 ];
+        name = "Rust";
+        packages = with pkgs; [cargo rustc clippy rustfmt rust-analyzer lldb_18];
+      };
+      python = pkgs.mkShell {
+        name = "Python";
+        packages = with pkgs; [ruff basedpyright];
       };
       default = nix;
     };
