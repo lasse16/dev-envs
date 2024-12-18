@@ -36,19 +36,19 @@
       };
       markdown = pkgs.mkShell {
         name = "markdown";
-        packages = with pkgs; [ marksman vale ];
+        packages = with pkgs; [marksman vale];
       };
       terraform = pkgs.mkShell {
         name = "terraform";
         packages = with pkgs; [terraform-ls tflint terraform-docs versioned-terraform];
       };
       gh-actions = pkgs.mkShell {
-     	name = "GitHub Actions" ;
-	packages = with pkgs; [yaml-language-server actionlint yamllint];
+        name = "GitHub Actions";
+        packages = with pkgs; [yaml-language-server actionlint yamllint];
       };
       lua = pkgs.mkShell {
-     	name = "Lua" ;
-	packages = with pkgs; [lua-language-server stylua ];
+        name = "Lua";
+        packages = with pkgs; [lua-language-server stylua];
       };
       rust = pkgs.mkShell {
         name = "Rust";
