@@ -39,7 +39,7 @@
       };
       rust = pkgs.mkShell {
         name = "Rust";
-        packages = with pkgs; [cargo rustc clippy rustfmt rust-analyzer lldb_18];
+        packages = with pkgs; [clippy rustfmt rust-analyzer lldb_18];
       };
       python = pkgs.mkShell {
         name = "Python";
