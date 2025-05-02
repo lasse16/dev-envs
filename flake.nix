@@ -45,6 +45,10 @@
         name = "Python";
         packages = with pkgs; [ruff basedpyright];
       };
+      kubernetes = pkgs.mkShell {
+        name = "Kubernetes";
+        packages = with pkgs; [yaml-language-server actionlint yamllint];
+      };
       default = nix;
     };
   };
