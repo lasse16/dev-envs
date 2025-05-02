@@ -1,6 +1,40 @@
 {
   "nodes": {
+    "kcl-lsp": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1744575631,
+        "narHash": "sha256-xcKUoYaQNwrA3zpV4f+mX4AiwDVIN2p3Vsla8BemBYg=",
+        "owner": "lasse16",
+        "repo": "kcl-language-server.nix",
+        "rev": "1c98d6559250e2d76bc14885fc6b446adc6cfb15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lasse16",
+        "repo": "kcl-language-server.nix",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1744098102,
+        "narHash": "sha256-tzCdyIJj9AjysC3OuKA+tMD/kDEDAF9mICPDU7ix0JA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c8cd81426f45942bb2906d5ed2fe21d2f19d95b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1734323986,
         "narHash": "sha256-m/lh6hYMIWDYHCAsn81CDAiXoT3gmxXI9J987W5tZrE=",
@@ -18,7 +52,8 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "kcl-lsp": "kcl-lsp",
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },
