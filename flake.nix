@@ -36,7 +36,7 @@
       };
       gh-actions = pkgs.mkShell {
         name = "GitHub Actions";
-        packages = with pkgs; [yaml-language-server actionlint yamllint];
+        packages = with pkgs; [actionlint ];
       };
       yaml = pkgs.mkShell {
         name = "Yaml";
@@ -56,7 +56,7 @@
       };
       kubernetes = pkgs.mkShell {
         name = "Kubernetes";
-        packages = with pkgs; [kubeconform yaml-language-server yamllint kcl kcl-language-server kubernetes-helm];
+        packages = with pkgs; [kubeconform kcl kcl-language-server kubernetes-helm];
       };
       default = nix;
     };
