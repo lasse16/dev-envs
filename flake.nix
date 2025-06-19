@@ -52,7 +52,7 @@
       };
       kubernetes = pkgs.mkShell {
         name = "Kubernetes";
-        packages = with pkgs; [kubeconform yaml-language-server yamllint kcl kcl-language-server];
+        packages = with pkgs; [kubeconform yaml-language-server yamllint kcl kcl-language-server kubernetes-helm];
       };
       default = nix;
     };
