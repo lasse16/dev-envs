@@ -38,6 +38,10 @@
         name = "GitHub Actions";
         packages = with pkgs; [yaml-language-server actionlint yamllint];
       };
+      yaml = pkgs.mkShell {
+        name = "Yaml";
+        packages = with pkgs; [yaml-language-server yamllint];
+      };
       lua = pkgs.mkShell {
         name = "Lua";
         packages = with pkgs; [lua-language-server stylua];
