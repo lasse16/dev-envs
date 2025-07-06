@@ -60,5 +60,11 @@
       };
       default = nix;
     };
+    templates = {
+      devshell-multi-system = {
+        path = ./templates/devshell-multi-systems;
+        description = "Flake with devshells for multiple supported systems";
+      };
+    };
   };
 }
