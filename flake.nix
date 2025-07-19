@@ -53,7 +53,7 @@
       };
       kubernetes = pkgs.mkShell {
         name = "Kubernetes";
-        packages = with pkgs; [kubeconform kubernetes-helm];
+        packages = with pkgs; [kubeconform kubernetes-helm k9s];
       };
       default = nix;
     };
