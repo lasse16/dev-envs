@@ -3,18 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    kcl-lsp.url = "github:lasse16/kcl-language-server.nix";
   };
 
   outputs = {
     self,
     nixpkgs,
-    kcl-lsp,
   }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [kcl-lsp.overlays.kcl-language-server];
     };
   in {
     devShells.${system} = rec {
@@ -56,7 +53,7 @@
       };
       kubernetes = pkgs.mkShell {
         name = "Kubernetes";
-        packages = with pkgs; [kubeconform kcl kcl-language-server kubernetes-helm];
+        packages = with pkgs; [kubeconform kubernetes-helm];
       };
       default = nix;
     };
