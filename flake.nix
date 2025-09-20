@@ -62,6 +62,10 @@
         path = ./templates/devshell-multi-systems;
         description = "Flake with devshells for multiple supported systems";
       };
+      python-uv = {
+        path = ./templates/python-uv;
+        description = "Flake with Python environment and UV manager";
+      };
     };
   };
 }
