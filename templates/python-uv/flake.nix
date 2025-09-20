@@ -87,6 +87,21 @@
       '';
     };
 
+    devShells.${system}.bootstrap = pkgs.mkShell {
+      packages = [python pkgs.uv];
+
+      env = {
+        UV_NO_SYNC = "1";
+        UV_PYTHON = pythonSet.python.interpreter;
+        UV_PYTHON_DOWNLOADS = "never";
+      };
+
+      shellHook = ''
+        unset PYTHONPATH
+        export REPO_ROOT=$(git rev-parse --show-toplevel)
+      '';
+    };
+
     packages.default = pkgs.stdenv.mkDerivation {
       pname = thisProjectAsNixPkg.pname;
       version = thisProjectAsNixPkg.version;
