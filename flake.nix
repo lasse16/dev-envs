@@ -37,7 +37,7 @@
       };
       yaml = pkgs.mkShell {
         name = "Yaml";
-        packages = with pkgs; [yaml-language-server yamllint];
+        packages = with pkgs; [yaml-language-server yamllint yamlfmt];
       };
       lua = pkgs.mkShell {
         name = "Lua";
