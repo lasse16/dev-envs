@@ -25,7 +25,7 @@
       };
       markdown = pkgs.mkShell {
         name = "markdown";
-        packages = with pkgs; [marksman vale];
+        packages = with pkgs; [marksman vale rumdl];
       };
       terraform = pkgs.mkShell {
         name = "terraform";
