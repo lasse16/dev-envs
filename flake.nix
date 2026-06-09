@@ -17,43 +17,80 @@
     devShells.${system} = rec {
       bash = pkgs.mkShell {
         name = "bash";
-        packages = with pkgs; [shellcheck shfmt];
+        packages = with pkgs; [
+          shellcheck
+          shfmt
+        ];
       };
       nix = pkgs.mkShell {
         name = "nix";
-        packages = with pkgs; [nil alejandra statix vulnix deadnix nixd];
+        packages = with pkgs; [
+          nil
+          alejandra
+          statix
+          vulnix
+          deadnix
+          nixd
+        ];
       };
       markdown = pkgs.mkShell {
         name = "markdown";
-        packages = with pkgs; [marksman vale rumdl];
+        packages = with pkgs; [
+          marksman
+          vale
+          rumdl
+        ];
       };
       terraform = pkgs.mkShell {
         name = "terraform";
-        packages = with pkgs; [terraform-ls tflint terraform-docs];
+        packages = with pkgs; [
+          terraform-ls
+          tflint
+          terraform-docs
+        ];
       };
       gh-actions = pkgs.mkShell {
         name = "GitHub Actions";
-        packages = with pkgs; [actionlint ];
+        packages = with pkgs; [actionlint];
       };
       yaml = pkgs.mkShell {
         name = "Yaml";
-        packages = with pkgs; [yaml-language-server yamllint yamlfmt];
+        packages = with pkgs; [
+          yaml-language-server
+          yamllint
+          yamlfmt
+        ];
       };
       lua = pkgs.mkShell {
         name = "Lua";
-        packages = with pkgs; [lua-language-server stylua];
+        packages = with pkgs; [
+          lua-language-server
+          stylua
+        ];
       };
       rust = pkgs.mkShell {
         name = "Rust";
-        packages = with pkgs; [clippy rustfmt rust-analyzer lldb_18];
+        packages = with pkgs; [
+          clippy
+          rustfmt
+          rust-analyzer
+          lldb_18
+        ];
       };
       python = pkgs.mkShell {
         name = "Python";
-        packages = with pkgs; [ruff basedpyright];
+        packages = with pkgs; [
+          ruff
+          basedpyright
+        ];
       };
       kubernetes = pkgs.mkShell {
         name = "Kubernetes";
-        packages = with pkgs; [kubeconform kubernetes-helm k9s];
+        packages = with pkgs; [
+          kubeconform
+          kubernetes-helm
+          k9s
+        ];
       };
       default = nix;
     };
