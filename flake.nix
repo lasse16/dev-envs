@@ -66,6 +66,10 @@
         path = ./templates/python-uv;
         description = "Flake with Python environment and UV manager";
       };
+      python-pyproject = {
+        path = ./templates/python-pyproject;
+        description = "Flake with Python devShell from a pyproject.toml";
+      };
     };
   };
 }
