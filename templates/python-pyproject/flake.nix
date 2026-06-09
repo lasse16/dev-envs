@@ -26,26 +26,54 @@
     # Validate that our Python satisfies requires-python from pyproject.toml
     pythonVersion = pyproject-nix.lib.pep440.parseVersion python.pythonVersion;
     requiresPython = project.requires-python;
-    pythonSatisfied = builtins.all (
-      cond: pyproject-nix.lib.pep440.comparators.${cond.op} pythonVersion cond.version
-    ) requiresPython;
+    pythonSatisfied =
+      builtins.all (
+        cond: pyproject-nix.lib.pep440.comparators.${cond.op} pythonVersion cond.version
+      )
+      requiresPython;
 
-    pythonEnv = assert pythonSatisfied
-      || throw "Python ${python.pythonVersion} does not satisfy requires-python from pyproject.toml";
-      python.withPackages (project.renderers.withPackages {
-        inherit python;
-      });
+    pythonChecked = assert pythonSatisfied
+    || throw "Python ${python.pythonVersion} does not satisfy requires-python from pyproject.toml"; python;
+
+    # Runtime dependencies only
+    pythonEnvRuntime = pythonChecked.withPackages (
+      project.renderers.withPackages {
+        python = pythonChecked;
+      }
+    );
+
+    # Runtime + dev dependencies (from [project.optional-dependencies.dev])
+    pythonEnvDev = pythonChecked.withPackages (
+      project.renderers.withPackages {
+        python = pythonChecked;
+        extras = ["dev"];
+      }
+    );
   in {
-    devShells.${system}.default = pkgs.mkShell {
-      packages = [
-        pythonEnv
-      ];
-      env = {
-        LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
-          pkgs.stdenv.cc.cc.lib
-          pkgs.libz
-          pkgs.openssl
+    devShells.${system} = {
+      default = pkgs.mkShell {
+        packages = [
+          pythonEnvDev
         ];
+        env = {
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+            pkgs.stdenv.cc.cc.lib
+            pkgs.libz
+            pkgs.openssl
+          ];
+        };
+      };
+      runtime = pkgs.mkShell {
+        packages = [
+          pythonEnvRuntime
+        ];
+        env = {
+          LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+            pkgs.stdenv.cc.cc.lib
+            pkgs.libz
+            pkgs.openssl
+          ];
+        };
       };
     };
   };
